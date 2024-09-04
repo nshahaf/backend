@@ -10,7 +10,7 @@ const server = http.createServer(app)
 app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve('public')))
+  app.use(express.static(path.resolve('dist')))
 } else {
   const corsOptions = {
       origin: [   'http://127.0.0.1:3000',
@@ -28,7 +28,7 @@ app.get('/api/desserts', (req, res) => {
   })
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.resolve('public/index.html'))
+  res.sendFile(path.resolve('dist/index.html'))
 })
 
 const port = process.env.PORT || 3030
